@@ -43,9 +43,6 @@ if st.button("Generate"):
 
     else:
 
-        try:
-
-            st.write("Backend:", BACKEND_URL)
 
             with st.spinner("Generating content..."):
 
@@ -73,22 +70,6 @@ if st.button("Generate"):
                     f"Backend Error: {response.status_code}"
                 )
 
-                st.write(response.text)
+                
 
-        except requests.exceptions.Timeout:
-
-            st.error(
-                "Request timed out. Backend may be waking up."
-            )
-
-        except requests.exceptions.ConnectionError:
-
-            st.error(
-                "Could not connect to backend."
-            )
-
-        except Exception as e:
-
-            st.error(
-                f"Unexpected Error: {e}"
-            )
+        
