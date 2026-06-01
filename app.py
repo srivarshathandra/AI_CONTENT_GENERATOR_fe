@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-BACKEND_URL ="http://127.0.0.1:8000"
+BACKEND_URL =st.secrets["be_server_url"]
 
 st.set_page_config(page_title="AI Content Generator",layout="wide")
 
@@ -39,18 +39,17 @@ level = st.selectbox(
 if st.button("Generate"):
     if topic == "":
         st.warning("Enter a topic")
-
+    
     else:
         response = requests.post(
-            f"{BACKEND_URL}/generate",
-            json={
-                "topic": topic,
-                "technology": technology,
-                "content_type": content_type_,
-                "level": level
-            }
-        )
-
+        f"{BACKEND_URL}/generate",
+    params={
+        "topic": topic,
+        "technology": technology,
+        "content_type": content_type_,
+        "level": level
+    }
+)
         if response.status_code == 200:
             result = response.json()
             st.subheader("Generated Content")
