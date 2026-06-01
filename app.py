@@ -51,14 +51,13 @@ if st.button("Generate"):
 
                 response = requests.post(
                     f"{BACKEND_URL}/generate",
-                    params={
-                        "topic": topic,
-                        "technology": technology,
-                        "content_type": content_type_,
-                        "level": level
+            params={
+                    "topic": topic,
+                    "technology": technology,
+                    "content_type_": content_type_,
+                    "level": level
                     },
-                    timeout=60
-                )
+                    timeout=60)
 
             if response.status_code == 200:
 
